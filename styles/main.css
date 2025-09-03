@@ -12,7 +12,9 @@ body {
     color: #ccd6f6; /* رنگ متن روشن */
     overflow-x: hidden;
 }
-
+.Projects {
+    color : White;
+}
 /* هدر */
 header {
     height: 100vh;
@@ -237,4 +239,5 @@ html {
     section p {
         font-size: 1rem;
     }
+
 }

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SepehrJam — Biography</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root{
+      --bg-light:#f4f7fa; --card-light:#fff; --text-light:#1f2937; --muted-light:#6b7280;
+      --bg-dark:#0f1724; --card-dark:#0b1220; --text-dark:#e6eef8; --muted-dark:#9aa4b2;
+      --accent:#7c3aed; --glass:rgba(255,255,255,0.05);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth;transition:background .4s,color .4s;}
+    body{
+      font-family:'Inter',sans-serif; background:var(--bg-dark); color:var(--text-dark); display:flex; justify-content:center; padding:40px 16px;
+    }
+    body.light{background:var(--bg-light); color:var(--text-light);}
+
+    .container{width:100%; max-width:1100px; background:var(--card-dark); border-radius:18px; box-shadow:0 8px 30px rgba(0,0,0,0.5); padding:28px; animation:fadeIn 1s ease forwards;}
+    body.light .container{background:var(--card-light); box-shadow:0 4px 20px rgba(0,0,0,0.1);}
+
+    .theme-toggle{position:fixed;top:20px;right:20px;background:var(--accent);color:#fff;padding:8px 12px;border:none;border-radius:8px;cursor:pointer;font-weight:600;}
+
+    .profile{display:flex;align-items:center;flex-direction:column;gap:14px;text-align:center;margin-bottom:50px;}
+    .avatar{width:120px;height:120px;border-radius:50%;background:url('profile.jpg') center/cover no-repeat,linear-gradient(135deg,var(--accent),#06b6d4);display:grid;place-items:center;font-size:34px;font-weight:800;animation:float 4s ease-in-out infinite;}
+    h1{font-size:28px;}
+    .lead{font-size:15px;color:var(--muted-dark);} 
+    body.light .lead{color:var(--muted-light);}
+
+    main{display:grid;grid-template-columns:1fr 350px;gap:50px;margin-top:28px;}
+
+    .card{background:rgba(255,255,255,0.03);border-radius:14px;padding:28px;box-shadow:0 4px 12px rgba(0,0,0,0.2);transition:transform .3s,box-shadow .3s;margin-bottom:40px;}
+    .card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,0.3);}
+    body.light .card{background:#fff;box-shadow:0 4px 16px rgba(0,0,0,0.1);}
+    h2{margin-bottom:12px;}
+
+    .timeline{display:flex;flex-direction:column;gap:18px;margin-top:10px;}
+    .entry{display:flex;gap:10px;align-items:flex-start;}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:5px;}
+    .entry .meta{font-weight:600;font-size:13px;}
+    .entry .text{color:var(--muted-dark);font-size:14px;}
+    body.light .entry .text{color:var(--muted-light);}
+
+    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+    .pill{padding:10px 14px;border-radius:999px;background:var(--glass);color:var(--muted-dark);font-size:13px;transition:all .3s;}
+    .pill:hover{color:#fff;background:var(--accent);}
+    body.light .pill{background:#f3f4f6;color:var(--muted-light);}
+
+    .friends{display:flex;flex-direction:column;gap:16px;margin-top:20px;}
+    .friend-card{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.03);padding:14px 20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:transform .3s,box-shadow .3s;}
+    .friend-card:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,0.25);}
+    body.light .friend-card{background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+    .friend-avatar{width:50px;height:50px;border-radius:50%;background:url('parsa.jpg') center/cover no-repeat;}
+    .friend-info{display:flex;flex-direction:column;}
+    .friend-name{font-weight:600;color:var(--text-dark);} body.light .friend-name{color:var(--text-light);}
+    .friend-role{font-size:13px;color:var(--muted-dark);} body.light .friend-role{color:var(--muted-light);}
+    .friend-socials a{margin-right:8px;font-size:18px;color:var(--muted-dark);text-decoration:none;transition:color .3s;}
+    .friend-socials a:hover{color:var(--accent);}
+
+    .side{position:sticky;top:28px;align-self:start;}
+    .contact .btn{display:inline-block;padding:12px 20px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#06b6d4);color:#fff;text-decoration:none;margin-top:14px;transition:opacity .3s;}
+    .contact .btn:hover{opacity:0.85;}
+
+    .socials{margin-top:18px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+    .socials a{font-size:22px;text-decoration:none;color:var(--muted-dark);transition:transform .3s,color .3s;}
+    .socials a:hover{color:var(--accent);transform:scale(1.2);}
+    body.light .socials a{color:var(--muted-light);}
+
+    footer{text-align:center;color:var(--muted-dark);font-size:13px;margin-top:40px;}
+    body.light footer{color:var(--muted-light);}
+
+    .reveal{opacity:0;transform:translateY(20px);transition:all .7s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+
+    @media(max-width:900px){main{grid-template-columns:1fr;gap:30px;}.side{position:static;margin-top:20px;}}
+
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="profile">
+      <div class="avatar">
+      </div>
+      <div>
+        <h1>SepehrJam</h1>
+        <p class="lead">Frontend Developer • Electronic Designer</p>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/SepehrJam" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://t.me/SepehrGJM" target="_blank" title="Telegram">
+          <i class="fab fa-telegram"></i>
+        </a>
+        <a href="mailto:sghafarian674@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
+
+    <main>
+      <section class="left">
+        <div class="card reveal" id="about">
+          <h2>About Me</h2>
+          <p>Hello, my name is Sepehr. I am an Arduino programmer and front-end developer. I have loved coding since I was a child. My father was a coder, and that made me the Sepehr.</p>
+        </div>
+
+        <div class="card reveal" id="skills">
+          <h2>Skills</h2>
+          <div class="skills">
+            <div class="pill">HTML</div>
+            <div class="pill">CSS</div>
+            <div class="pill">JavaScript</div>
+            <div class="pill">React</div>
+            <div class="pill">TelwindCSS</div>
+            <div class="pill">Vite</div>
+            <div class="pill">Arduino</div>
+            <div class="pill">Python</div>
+          </div>
+        </div>
+
+        <div class="friends card reveal" id="friends">
+          <h2>My Best Friend</h2>
+          <div class="friend-card">
+            <div class="friend-avatar"></div>
+            <div class="friend-info">
+              <span class="friend-name">Parsa Saadat</span>
+              <span class="friend-role">Best Friend</span>
+              <div class="friend-socials">
+                <a href="https://github.com/parsa-saadat" target="_blank" title="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://t.me/ParsaSaadat" target="_blank" title="Telegram">
+                  <i class="fab fa-telegram"></i>
+                </a>
+                <a href="mailto:parsasaadat13881@gmail.com" title="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side">
+        <div class="card reveal" id="timeline">
+          <h2>Timeline</h2>
+          <div class="timeline">
+            <div class="entry"><div class="dot"></div><div><div class="meta">2025 — Present</div><div class="text">Your current role or project...</div></div></div>
+            <div class="entry"><div class="dot"></div><div><div class="meta">2023 — 2024</div><div class="text">Your past experience...</div></div></div>
+            <div class="entry"><div class="dot"></div><div><div class="meta">Before 2023</div><div class="text">Earlier milestones...</div></div></div>
+          </div>
+        </div>
+
+        <div class="card contact reveal" id="contact">
+          <h3>Contact</h3>
+          <p class="lead">You can place your contact information here.</p>
+          <a href="mailto:you@example.com" class="btn">Email Me</a>
+        </div>
+      </aside>
+    </main>
+
+    <footer>© <span id="year"></span> SepehrJam • Built with <i class="fas fa-heart" style="color:#e74c3c;"></i></footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+
+    const revealEls=document.querySelectorAll('.reveal');
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+    },{threshold:0.1});
+    revealEls.forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
